@@ -36,5 +36,5 @@ Runs a very basic Node.js server (the PROFESSOR version :).
 
 ### profexercise02
 
-A static HTML page about movies.
+A static HTML page about the best movie.
 
