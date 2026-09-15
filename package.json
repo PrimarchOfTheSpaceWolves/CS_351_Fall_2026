@@ -12,7 +12,8 @@
   },
   "scripts": {
     "basic": "serve basic-site",
-    "p01": "node profexercise01/server.js"
+    "p01": "node profexercise01/server.js",
+    "p02": "serve profexercise02"
   },
   "dependencies": {
     "express": "^5.2.1"

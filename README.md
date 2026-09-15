@@ -33,3 +33,8 @@ The website should then be accessible at [localhost:3000](http://localhost:3000)
 ### profexercise01
 
 Runs a very basic Node.js server (the PROFESSOR version :).
+
+### profexercise02
+
+A static HTML page about movies.
+
