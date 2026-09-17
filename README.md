@@ -38,3 +38,8 @@ Runs a very basic Node.js server (the PROFESSOR version :).
 
 A static HTML page about the best movie.
 
+### profexercise03
+
+Demonstrates handling a GET request through client-side code.
+
+
