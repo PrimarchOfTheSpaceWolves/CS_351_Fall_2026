@@ -25,6 +25,19 @@ const server = http.createServer((req,res) => {
         return;
     }
     else if(req.method === "POST" && req.url === "/story") {
+        let body = "";
+
+        req.on("data", chunk => {
+            body += chunk;
+            console.log(`New chunk: ${chunk}`);
+        });
+
+        req.on("end", () => {
+            console.log(`Body is: ${body}`);
+        });
+
+        console.log("End of response for POST");
+
         res.writeHead(200, { "Content-Type": "text/plain" });
         res.end("STORY");
         return;
