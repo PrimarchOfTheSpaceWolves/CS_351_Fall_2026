@@ -19,9 +19,6 @@ const server = http.createServer((req,res) => {
             res.end(data);
         });  
 
-        //res.writeHead(200, { "Content-Type": "text/plain" });
-        //res.end("HOME");
-
         return;
     }
     else if(req.method === "POST" && req.url === "/story") {
@@ -34,12 +31,34 @@ const server = http.createServer((req,res) => {
 
         req.on("end", () => {
             console.log(`Body is: ${body}`);
+            const params = new URLSearchParams(body);
+            const firstname = params.get("firstname");
+            const birth = params.get("birth");
+
+            res.writeHead(200, { "Content-Type": "text/html" });
+            res.end(`
+                <!DOCTYPE html>
+                <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport"
+                            content="width=device-width, initial-scale=1.0">
+                        <title>The Story Thus Far...</title>
+                    </head>
+                    <body>
+                        <header>
+                            <h1 id="storytitle">The Tale of ${firstname}</h1>
+                        </header>
+                        <main>
+                            <p id="story">${firstname} was born at a very young age
+                                in a ${birth}.</p>
+                        </main>
+                    </body>
+                </html>  
+            `); 
         });
 
         console.log("End of response for POST");
-
-        res.writeHead(200, { "Content-Type": "text/plain" });
-        res.end("STORY");
         return;
     }
 
