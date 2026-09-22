@@ -34,6 +34,7 @@ const server = http.createServer((req,res) => {
             const params = new URLSearchParams(body);
             const firstname = params.get("firstname");
             const birth = params.get("birth");
+            const height = params.get("height");
 
             res.writeHead(200, { "Content-Type": "text/html" });
             res.end(`
@@ -51,7 +52,8 @@ const server = http.createServer((req,res) => {
                         </header>
                         <main>
                             <p id="story">${firstname} was born at a very young age
-                                in a ${birth}.</p>
+                                in a ${birth}.  Before long, they stood over 
+                                ${height} feet tall.</p>
                         </main>
                     </body>
                 </html>  
