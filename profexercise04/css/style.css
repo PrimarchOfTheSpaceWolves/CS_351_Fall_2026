@@ -22,6 +22,10 @@ p {
     color: blue;   
 }
 
+footer p {
+    font-size: 0.5em;
+}
+
 strong {
     font-size: 2em;
 }
