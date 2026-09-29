@@ -29,3 +29,9 @@ footer p {
 strong {
     font-size: 2em;
 }
+
+.robot {
+    color: #555;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: bold;
+}
