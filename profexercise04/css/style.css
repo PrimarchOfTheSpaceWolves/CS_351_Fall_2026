@@ -3,6 +3,7 @@ html {
     font-family: 'Comic Sans MS', cursive;
     font-size: 18px;
     color: #DD0000;
+    -webkit-text-stroke: 1px black; 
 }
 
 body {
