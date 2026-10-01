@@ -49,3 +49,9 @@ strong {
 h3:hover {
     font-style: italic;
 }
+
+p::first-letter {
+    color: red;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 6em;
+}
