@@ -45,3 +45,7 @@ strong {
 .robot.warning {
     color: #FFF;
 }
+
+h3:hover {
+    font-style: italic;
+}
