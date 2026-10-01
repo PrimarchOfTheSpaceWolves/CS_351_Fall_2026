@@ -35,3 +35,13 @@ strong {
     font-family:'Courier New', Courier, monospace;
     font-weight: bold;
 }
+
+.warning {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 3em;
+}
+
+.robot.warning {
+    color: #FFF;
+}
