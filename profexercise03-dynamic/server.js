@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 
 const server = http.createServer((req,res) => {
+    console.log("URL:", req.url);
 
     if(req.method === "GET" && req.url === "/") {
         const filepath = path.join(__dirname, "public", "index.html");
@@ -16,6 +17,23 @@ const server = http.createServer((req,res) => {
             }
 
             res.writeHead(200, { "Content-Type": "text/html" });
+            res.end(data);
+        });  
+
+        return;
+    }
+    else if(req.method === "GET" && req.url === "/css/style.css") {
+        const filepath = path.join(__dirname, "public", req.url);
+        console.log("FILE:", filepath);
+        fs.readFile(filepath, (err,data) => {
+            if(err) {
+                console.log("ERROR:", err.message);
+                res.writeHead(500, { "Content-Type": "text/plain" });
+                res.end("500 Server Error");
+                return;
+            }
+
+            res.writeHead(200, { "Content-Type": "text/css" });
             res.end(data);
         });  
 
