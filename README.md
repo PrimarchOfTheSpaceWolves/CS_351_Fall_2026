@@ -46,3 +46,6 @@ Demonstrates handling a GET request through client-side code.
 
 Demonstrates handling a POST request through server-side code.
 
+### profexercise04
+
+Demonstrates adding CSS (professor edition).
