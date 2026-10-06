@@ -1,4 +1,11 @@
 /* Document-wide settings */
+*,
+*::before,
+*::after {
+    /* border: 5px solid black;*/
+    box-sizing: border-box;
+}
+
 html {
     font-family: 'Comic Sans MS', cursive;
     font-size: 18px;
