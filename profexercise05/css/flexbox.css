@@ -4,6 +4,7 @@
     gap: 5px;  
     justify-content: space-evenly; 
     /* flex-end == end */
+    align-items: flex-end;
 }
 
 .card {
