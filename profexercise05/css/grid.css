@@ -13,6 +13,11 @@
     flex-direction: column;
 }
 
+nav {
+    position: sticky;
+    top: 0;
+}
+
 /*
 .card.special {    
     grid-column: span 2;
