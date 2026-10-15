@@ -3,6 +3,9 @@
     /*grid-template-columns: repeat(3, 1fr);*/
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2vw;
+
+    justify-items: center;
+    align-items: center;
 }
 
 /*
@@ -10,6 +13,10 @@
     grid-column: span 2;
 }
 */
+
+.card.special {
+    justify-self: end;
+}
 
 .navbar {
     display: flex;
