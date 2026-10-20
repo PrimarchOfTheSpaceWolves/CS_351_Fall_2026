@@ -49,3 +49,7 @@ Demonstrates handling a POST request through server-side code.
 ### profexercise04
 
 Demonstrates adding CSS (professor edition).
+
+### profexercise05
+
+Experiments with different CSS layouts (professor edition).

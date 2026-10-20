@@ -16,7 +16,8 @@
     "p02": "serve profexercise02",
     "p03s": "serve profexercise03-static",
     "p03d": "node profexercise03-dynamic/server.js",
-    "p04": "serve profexercise04"
+    "p04": "serve profexercise04",
+    "p05": "serve profexercise05"
   },
   "dependencies": {
     "express": "^5.2.1"
