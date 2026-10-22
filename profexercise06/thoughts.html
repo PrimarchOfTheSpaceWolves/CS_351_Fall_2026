@@ -5,7 +5,7 @@
         <meta name="viewport"
                 content="width=device-width, initial-scale=1.0">
         <title>Thoughts</title>
-        <script src="js/classic.js" defer></script>
+        <script src="js/classic.js"></script>
     </head>
     <body>
         <header>
@@ -13,17 +13,20 @@
         </header>
         <main>   
             <script type="module">
-                import {greet} from "./js/utils.js";
+                import {greet,MODULE_OATMEAL} from "./js/utils.js";
                 const params = new URLSearchParams(window.location.search);
                 let fullName = params.get("name");
                 console.log(greet(fullName));
+                console.log("Module oatmeal from module:", MODULE_OATMEAL);
             </script>
 
             <script type="module">
                 //console.log("fullName in internal module:", fullName);
+                console.log("Classic oatmeal from module:", CLASSIC_OATMEAL);
             </script>
 
             <script> 
+                console.log("Classic oatmeal from classic:", CLASSIC_OATMEAL);
                 //console.log("fullName in classic:", fullName);
             
                 let thoughtElement = document.getElementById("thoughts");          
