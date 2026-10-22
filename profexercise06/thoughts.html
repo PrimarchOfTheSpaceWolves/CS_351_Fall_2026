@@ -18,18 +18,25 @@
                 let fullName = params.get("name");
                 console.log(greet(fullName));
             </script>
-            <script>                
-                console.log("Thoughts BEFORE:", 
-                    document.getElementById("thoughts"));
 
+            <script type="module">
+                //console.log("fullName in internal module:", fullName);
+            </script>
+
+            <script> 
+                //console.log("fullName in classic:", fullName);
+            
+                let thoughtElement = document.getElementById("thoughts");          
+                                
                 console.log("Mystery before:", mystery);
                 var mystery = "The butler did it.";
                 console.log("Mystery after:", mystery);
             </script>
             <p id="thoughts"></p>
             <script>
-                console.log("Thoughts AFTER:", 
-                    document.getElementById("thoughts"));
+                console.log("Thoughts BEFORE:", thoughtElement); 
+                thoughtElement = document.getElementById("thoughts");
+                console.log("Thoughts AFTER:", thoughtElement);
             </script>
         </main>
     </body>
