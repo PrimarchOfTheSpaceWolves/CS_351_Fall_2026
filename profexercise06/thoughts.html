@@ -18,9 +18,13 @@
                 let fullName = params.get("name");
                 console.log(greet(fullName));
             </script>
-            <script>
+            <script>                
                 console.log("Thoughts BEFORE:", 
                     document.getElementById("thoughts"));
+
+                console.log("Mystery before:", mystery);
+                var mystery = "The butler did it.";
+                console.log("Mystery after:", mystery);
             </script>
             <p id="thoughts"></p>
             <script>
