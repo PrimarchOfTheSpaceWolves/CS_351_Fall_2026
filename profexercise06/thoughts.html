@@ -46,8 +46,13 @@
                     termsString = "  Aw man, there goes my retirement.";
                 }
 
+                let renString = "";
+                if(yearOfBirth >= 1300 && yearOfBirth <= 1600) {
+                    renString = "  You are born in the Renaissance.";
+                }
+
                 document.getElementById("thoughts").textContent
-                 = birthString + ancientString + termsString;
+                 = birthString + ancientString + termsString + renString;
 
             </script>
 
