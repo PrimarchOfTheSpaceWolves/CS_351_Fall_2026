@@ -38,8 +38,17 @@
                 let birthString = fullName + " was born in " 
                                     + yearOfBirth + ".";
 
+                const terms = params.get("terms");
+                console.log("terms:", terms);
+
+                let termsString = "";
+                if(terms == null) {
+                    termsString = "  Aw man, there goes my retirement.";
+                }
+
                 document.getElementById("thoughts").textContent
-                 = birthString + ancientString;
+                 = birthString + ancientString + termsString;
+
             </script>
 
             <script type="module">
