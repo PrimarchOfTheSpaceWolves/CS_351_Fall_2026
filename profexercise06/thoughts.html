@@ -16,37 +16,28 @@
                 import {greet,MODULE_OATMEAL} from "./js/utils.js";
                 const params = new URLSearchParams(window.location.search);
                 let fullName = params.get("name");
-
-                fullName = fullName || "Guest";
-
-                console.log(greet(fullName));
-                console.log("Module oatmeal from module:", MODULE_OATMEAL);
-
                 let age = params.get("age");
+                let height = params.get("height");
+                const terms = params.get("terms");
+
+                // Process full name
+                fullName = fullName.trim();
+                fullName = fullName || "Guest";
+                console.log(greet(fullName));
+                
+                // Age calculations                
                 console.log("Age before:", age, typeof age);
                 age = Number(age);
                 console.log("Age after:", age, typeof age);
 
-                let ancientString = "";
-                if(age > 200) {
-                    ancientString = "  JEEPERS, YOU'RE ANCIENT.";
-                }
-
-                let height = params.get("height");
-                console.log("Height:", height, typeof height);
-
                 const currentYear = new Date().getFullYear();
                 let yearOfBirth = currentYear - age;
-
                 let birthString = fullName + " was born in " 
                                     + yearOfBirth + ".";
 
-                const terms = params.get("terms");
-                console.log("terms:", terms);
-
-                let termsString = "";
-                if(terms == null) {
-                    termsString = "  Aw man, there goes my retirement.";
+                let ancientString = "";
+                if(age > 200) {
+                    ancientString = "  JEEPERS, YOU'RE ANCIENT.";
                 }
 
                 let renString = "";
@@ -54,6 +45,20 @@
                     renString = "  You are born in the Renaissance.";
                 }
 
+                // Check height                
+                console.log("Height:", height, typeof height);
+
+                // Check terms 
+                console.log("terms:", terms);
+
+                let termsString = "";
+                if(terms == null) {
+                    termsString = "  Aw man, there goes my retirement.";
+                }
+
+                // Compile final output
+                
+                
                 document.getElementById("thoughts").textContent
                  = birthString + ancientString + termsString + renString;
 
