@@ -16,6 +16,9 @@
                 import {greet,MODULE_OATMEAL} from "./js/utils.js";
                 const params = new URLSearchParams(window.location.search);
                 let fullName = params.get("name");
+
+                fullName = fullName || "Guest";
+
                 console.log(greet(fullName));
                 console.log("Module oatmeal from module:", MODULE_OATMEAL);
 
