@@ -24,6 +24,11 @@
                 age = Number(age);
                 console.log("Age after:", age, typeof age);
 
+                let ancientString = "";
+                if(age > 200) {
+                    ancientString = "  JEEPERS, YOU'RE ANCIENT.";
+                }
+
                 let height = params.get("height");
                 console.log("Height:", height, typeof height);
 
@@ -33,7 +38,8 @@
                 let birthString = fullName + " was born in " 
                                     + yearOfBirth + ".";
 
-                document.getElementById("thoughts").textContent = birthString;
+                document.getElementById("thoughts").textContent
+                 = birthString + ancientString;
             </script>
 
             <script type="module">
