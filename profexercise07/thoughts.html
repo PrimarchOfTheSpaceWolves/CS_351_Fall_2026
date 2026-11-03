@@ -13,11 +13,7 @@
         </header>
         <main>   
             <script type="module">
-                import {greet,
-                        MODULE_OATMEAL,
-                        processFullName,
-                        calculateBirthYear,
-                        checkInRenaissance} from "./js/utils.js";
+                import * as util from "./js/utils.js";
 
                 const params = new URLSearchParams(window.location.search);
                 let fullName = params.get("name");
@@ -27,16 +23,16 @@
                 const isShouting = params.has("shouting");
 
                 // Process full name
-                fullName = processFullName(fullName);
+                fullName = util.processFullName(fullName);
 
-                console.log(greet(fullName));
+                console.log(util.greet(fullName));
                 
                 // Age calculations                
                 console.log("Age before:", age, typeof age);
                 age = Number(age);
                 console.log("Age after:", age, typeof age);
 
-                let yearOfBirth = calculateBirthYear(age);
+                let yearOfBirth = util.calculateBirthYear(age);
                 let birthString = fullName + " was born in " 
                                     + yearOfBirth + ".";
 
@@ -46,7 +42,7 @@
                 }
 
                 let renString = "";
-                if(checkInRenaissance(yearOfBirth)) {
+                if(util.checkInRenaissance(yearOfBirth)) {
                     renString = "  You are born in the Renaissance.";
                 }
 
