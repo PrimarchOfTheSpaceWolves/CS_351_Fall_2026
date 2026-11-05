@@ -71,15 +71,21 @@
                     },
 
                     toggleShouting() {
-                        isShouting = !isShouting;
+                        this.isShouting = !this.isShouting;
                         this.render();
                     }
                 }
 
                 thoughtsView.render();
 
-            </script>
+                const shoutButton = document.getElementById("toggleShouting");
+                shoutButton.addEventListener(
+                    "click",
+                    thoughtsView.toggleShouting.bind(thoughtsView)
+                );
 
+            </script>
+            <button id="toggleShouting" type="button">Toggle Shouting</button>
             <p id="thoughts"></p>            
         </main>
     </body>
