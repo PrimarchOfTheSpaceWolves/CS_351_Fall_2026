@@ -17,96 +17,70 @@
 
                 const params = new URLSearchParams(window.location.search);
                 let fullName = params.get("name");
-                let age = params.get("age");
-                let height = params.get("height");
-                const terms = params.get("terms");
+                let age = params.get("age");                
+                const termsAccepted = params.has("terms");
                 const isShouting = params.has("shouting");
               
-                // Process full name
-                fullName = util.processFullName(fullName);
-                console.log(util.greet(fullName));
-                
-                // Age calculations                
-                console.log("Age before:", age, typeof age);
-                age = Number(age);
-                console.log("Age after:", age, typeof age);
-
-                let yearOfBirth = util.calculateBirthYear(age);
-                
+                // Create person object
                 const person = {
-                    name: fullName,
+                    name: util.processFullName(fullName),
                     age: Number(age),
-                    yearOfBirth,
-                    termsAccepted: params.has("terms"),
+                    yearOfBirth: util.calculateBirthYear(age),
+                    termsAccepted
                 }
 
-                function buildThoughts(person, shouting) {
-                    let birthString = person.name + " was born in " 
-                                    + person.yearOfBirth + ".";
+                // Get thoughts element
+                const thoughtElement = document.getElementById("thoughts");
 
-                    let ancientString = "";
-                    if(person.age > 200) {
-                        ancientString = "  JEEPERS, YOU'RE ANCIENT.";
-                    }
+                // Create thoughtsView object
+                const thoughtsView = {
+                    person,
+                    isShouting,
 
-                    let renString = "";
-                    if(util.checkInRenaissance(person.yearOfBirth)) {
-                        renString = "  You are born in the Renaissance.";
-                    }
-                    
-                    let termsString = "";
-                    if(!person.termsAccepted) {
-                        termsString = "  Aw man, there goes my retirement.";
-                    }
+                    buildThoughts() {
+                        let birthString = this.person.name + " was born in " 
+                                        + this.person.yearOfBirth + ".";
 
-                    // Compile final output
-                    let finalString = birthString + ancientString + termsString + renString;
-                    if(shouting) {
-                        finalString = finalString.toUpperCase();
-                    }
+                        let ancientString = "";
+                        if(this.person.age > 200) {
+                            ancientString = "  JEEPERS, YOU'RE ANCIENT.";
+                        }
 
-                    return finalString;
+                        let renString = "";
+                        if(util.checkInRenaissance(this.person.yearOfBirth)) {
+                            renString = "  You are born in the Renaissance.";
+                        }
+                        
+                        let termsString = "";
+                        if(!this.person.termsAccepted) {
+                            termsString = "  Aw man, there goes my retirement.";
+                        }
+
+                        // Compile final output
+                        let finalString = birthString + ancientString + termsString + renString;
+                        if(this.isShouting) {
+                            finalString = finalString.toUpperCase();
+                        }
+
+                        return finalString;
+                    },
+
+                    render() {
+                        const thoughts = this.buildThoughts();
+                        thoughtElement.textContent = thoughts;
+                    },
+
+                    toggleShouting() {
+                        isShouting = !isShouting;
+                        this.render();
+                    }
                 }
 
-                // Checking out name and length of functions
-                console.log(buildThoughts.name);
-                console.log(buildThoughts.length);
-
-                function foo(x, y=2, ...args) {
-                    console.log(args.length);
-                }
-                foo(5, 7, 3, 6, 3, 1);
-                foo(5);
-
-                console.log("foo.length:", foo.length);
-                // End check
-                              
-                document.getElementById("thoughts").textContent
-                 = buildThoughts(person, isShouting);
+                thoughtsView.render();
 
             </script>
 
-            <script type="module">
-                //console.log("fullName in internal module:", fullName);
-                console.log("Classic oatmeal from module:", CLASSIC_OATMEAL);
-            </script>
-
-            <script> 
-                console.log("Classic oatmeal from classic:", CLASSIC_OATMEAL);
-                //console.log("fullName in classic:", fullName);
-            
-                let thoughtElement = document.getElementById("thoughts");          
-                                
-                console.log("Mystery before:", mystery);
-                var mystery = "The butler did it.";
-                console.log("Mystery after:", mystery);
-            </script>
-            <p id="thoughts"></p>
-            <script>
-                console.log("Thoughts BEFORE:", thoughtElement); 
-                thoughtElement = document.getElementById("thoughts");
-                console.log("Thoughts AFTER:", thoughtElement);
-            </script>
+            <p id="thoughts"></p>            
         </main>
     </body>
 </html>
