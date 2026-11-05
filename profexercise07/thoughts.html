@@ -67,8 +67,20 @@
 
                     return finalString;
                 }
-              
-                
+
+                // Checking out name and length of functions
+                console.log(buildThoughts.name);
+                console.log(buildThoughts.length);
+
+                function foo(x, y=2, ...args) {
+                    console.log(args.length);
+                }
+                foo(5, 7, 3, 6, 3, 1);
+                foo(5);
+
+                console.log("foo.length:", foo.length);
+                // End check
+                              
                 document.getElementById("thoughts").textContent
                  = buildThoughts(person, isShouting);
 
