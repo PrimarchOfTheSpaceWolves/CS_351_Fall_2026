@@ -21,10 +21,9 @@
                 let height = params.get("height");
                 const terms = params.get("terms");
                 const isShouting = params.has("shouting");
-
+              
                 // Process full name
                 fullName = util.processFullName(fullName);
-
                 console.log(util.greet(fullName));
                 
                 // Age calculations                
@@ -33,38 +32,45 @@
                 console.log("Age after:", age, typeof age);
 
                 let yearOfBirth = util.calculateBirthYear(age);
-                let birthString = fullName + " was born in " 
-                                    + yearOfBirth + ".";
-
-                let ancientString = "";
-                if(age > 200) {
-                    ancientString = "  JEEPERS, YOU'RE ANCIENT.";
+                
+                const person = {
+                    name: fullName,
+                    age: Number(age),
+                    yearOfBirth,
+                    termsAccepted: params.has("terms"),
                 }
 
-                let renString = "";
-                if(util.checkInRenaissance(yearOfBirth)) {
-                    renString = "  You are born in the Renaissance.";
+                function buildThoughts(person, shouting) {
+                    let birthString = person.name + " was born in " 
+                                    + person.yearOfBirth + ".";
+
+                    let ancientString = "";
+                    if(person.age > 200) {
+                        ancientString = "  JEEPERS, YOU'RE ANCIENT.";
+                    }
+
+                    let renString = "";
+                    if(util.checkInRenaissance(person.yearOfBirth)) {
+                        renString = "  You are born in the Renaissance.";
+                    }
+                    
+                    let termsString = "";
+                    if(!person.termsAccepted) {
+                        termsString = "  Aw man, there goes my retirement.";
+                    }
+
+                    // Compile final output
+                    let finalString = birthString + ancientString + termsString + renString;
+                    if(shouting) {
+                        finalString = finalString.toUpperCase();
+                    }
+
+                    return finalString;
                 }
-
-                // Check height                
-                console.log("Height:", height, typeof height);
-
-                // Check terms 
-                console.log("terms:", terms);
-
-                let termsString = "";
-                if(terms == null) {
-                    termsString = "  Aw man, there goes my retirement.";
-                }
-
-                // Compile final output
-                let finalString = birthString + ancientString + termsString + renString;
-                if(isShouting) {
-                    finalString = finalString.toUpperCase();
-                }
+              
                 
                 document.getElementById("thoughts").textContent
-                 = finalString;
+                 = buildThoughts(person, isShouting);
 
             </script>
 
