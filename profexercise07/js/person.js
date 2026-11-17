@@ -32,3 +32,15 @@ export class Person {
                 + `in the year ${this.getBirthYear()}.`
     }
 }
+
+export class Student extends Person {
+    constructor(name, age, termsAccepted, major) {
+        super(name, age, termsAccepted);
+        this.major = major;
+    }
+
+    getDescription() {
+        return super.getDescription()
+            + ` ${this.name} studies ${this.major}.`
+    }
+}
