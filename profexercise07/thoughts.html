@@ -14,13 +14,17 @@
         <main>   
             <script type="module">
                 import * as util from "./js/utils.js";
+                import {Person} from "./js/person.js";
 
                 const params = new URLSearchParams(window.location.search);
                 let fullName = params.get("name");
                 let age = params.get("age");                
                 const termsAccepted = params.has("terms");
                 const isShouting = params.has("shouting");
+
+                const person = new Person(fullName, age, termsAccepted);
               
+                /*
                 // Create person object
                 const person = {
                     name: util.processFullName(fullName),
@@ -28,6 +32,9 @@
                     yearOfBirth: util.calculateBirthYear(age),
                     termsAccepted
                 }
+                */
+
+
 
                 // Get thoughts element
                 const thoughtElement = document.getElementById("thoughts");
@@ -38,8 +45,7 @@
                     isShouting,
 
                     buildThoughts() {
-                        let birthString = this.person.name + " was born in " 
-                                        + this.person.yearOfBirth + ".";
+                        let birthString = this.person.getDescription();
 
                         let ancientString = "";
                         if(this.person.age > 200) {
@@ -47,7 +53,7 @@
                         }
 
                         let renString = "";
-                        if(util.checkInRenaissance(this.person.yearOfBirth)) {
+                        if(util.checkInRenaissance(this.person.getBirthYear())) {
                             renString = "  You are born in the Renaissance.";
                         }
                         
