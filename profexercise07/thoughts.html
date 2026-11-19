@@ -21,8 +21,12 @@
                 let age = params.get("age");                
                 const termsAccepted = params.has("terms");
                 const isShouting = params.has("shouting");
+                const isStudent = params.has("student");
+                const major = params.get("major");
 
-                const person = new Person(fullName, age, termsAccepted);
+                const person = isStudent ? 
+                    new Student(fullName, age, termsAccepted, major) :
+                    new Person(fullName, age, termsAccepted);
               
                 /*
                 // Create person object
