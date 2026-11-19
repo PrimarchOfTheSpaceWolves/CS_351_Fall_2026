@@ -23,6 +23,21 @@
                 const isShouting = params.has("shouting");
                 const isStudent = params.has("student");
                 const major = params.get("major");
+                let favorites = params.get("favorites");
+                
+                favorites = favorites.trim();
+                let favFoods = [];
+                if(favorites.length > 0) {
+                    favFoods = favorites.split(",");
+                }
+
+                let cleanFoods = [];
+                for(let food of favFoods) {
+                    food = food.trim();
+                    if(food.length > 0) {
+                        cleanFoods.push(food);
+                    }
+                }
 
                 const person = isStudent ? 
                     new Student(fullName, age, termsAccepted, major) :
