@@ -66,8 +66,13 @@
                             termsString = "  Aw man, there goes my retirement.";
                         }
 
+                        const vcnt = util.countVowels(this.person.name);
+                        const vowelString = ` You have ${vcnt} vowels in your name.`
+
                         // Compile final output
-                        let finalString = birthString + ancientString + termsString + renString;
+                        let finalString = birthString + ancientString 
+                                            + termsString + renString
+                                            + vowelString;
                         if(this.isShouting) {
                             finalString = finalString.toUpperCase();
                         }

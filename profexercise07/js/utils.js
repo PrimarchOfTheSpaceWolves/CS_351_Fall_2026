@@ -25,3 +25,24 @@ export function calculateBirthYear(age) {
 export function checkInRenaissance(year) {
     return (year >= 1300 && year <= 1600);
 }
+
+export function countVowels(text) {
+    "use strict";
+    text = text.toLowerCase();
+    let cnt = 0;
+    for(let i = 0; i < text.length; i++) {
+        let c = text[i];
+        switch(c) {
+            case "a":
+            case "e":
+            case "i":
+            case "o":
+            case "u":
+                cnt++;
+                break;
+            //default:
+            //    break;
+        }        
+    }
+    return cnt;
+}
