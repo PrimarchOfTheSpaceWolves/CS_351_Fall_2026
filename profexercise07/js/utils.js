@@ -46,3 +46,11 @@ export function countVowels(text) {
     }
     return cnt;
 }
+
+export function parseFavorites(rawText) {
+    rawText = rawText.trim();
+    const list = rawText.split(",")
+                    .map(s => s.trim())
+                    .filter(s => s.length > 0);
+    return list;
+}

@@ -25,6 +25,7 @@
                 const major = params.get("major");
                 let favorites = params.get("favorites");
                 
+                /*
                 favorites = favorites.trim();
                 let favFoods = [];
                 if(favorites.length > 0) {
@@ -38,6 +39,9 @@
                         cleanFoods.push(food);
                     }
                 }
+                */
+
+                const cleanFoods = util.parseFavorites(favorites);
 
                 const person = isStudent ? 
                     new Student(fullName, age, termsAccepted, cleanFoods, major) :
@@ -52,6 +56,10 @@
                     termsAccepted
                 }
                 */
+
+                const list = [0,1,,3,,5,6];
+                const holeless = list.filter(() => true);
+                console.log("Hole:", holeless);
 
 
 
