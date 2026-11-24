@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+                content="width=device-width, initial-scale=1.0">
+        <title>Thoughts</title>
+        <script src="js/classic.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Thoughts</h1>
+        </header>
+        <main>   
+            <script type="module">
+                import * as util from "./js/utils.js";
+                import {Person, Student} from "./js/person.js";
+
+                const params = new URLSearchParams(window.location.search);
+                let fullName = params.get("name");
+                let age = params.get("age");                
+                const termsAccepted = params.has("terms");
+                const isShouting = params.has("shouting");
+                const isStudent = params.has("student");
+                const major = params.get("major");
+                let favorites = params.get("favorites");
+                
+                /*
+                favorites = favorites.trim();
+                let favFoods = [];
+                if(favorites.length > 0) {
+                    favFoods = favorites.split(",");
+                }
+
+                let cleanFoods = [];
+                for(let food of favFoods) {
+                    food = food.trim();
+                    if(food.length > 0) {
+                        cleanFoods.push(food);
+                    }
+                }
+                */
+
+                const cleanFoods = util.parseFavorites(favorites);
+
+                const person = isStudent ? 
+                    new Student(fullName, age, termsAccepted, cleanFoods, major) :
+                    new Person(fullName, age, termsAccepted, cleanFoods);
+              
+                /*
+                // Create person object
+                const person = {
+                    name: util.processFullName(fullName),
+                    age: Number(age),
+                    yearOfBirth: util.calculateBirthYear(age),
+                    termsAccepted
+                }
+                */
+
+                const list = [0,1,,3,,5,6];
+                const holeless = list.filter(() => true);
+                console.log("Hole:", holeless);
+
+
+
+                // Get thoughts element
+                const thoughtElement = document.getElementById("thoughts");
+
+                // Create thoughtsView object
+                const thoughtsView = {
+                    person,
+                    isShouting,
+
+                    buildThoughts() {
+                        let birthString = this.person.getDescription();
+
+                        let ancientString = "";
+                        if(this.person.age > 200) {
+                            ancientString = "  JEEPERS, YOU'RE ANCIENT.";
+                        }
+
+                        let renString = "";
+                        if(util.checkInRenaissance(this.person.getBirthYear())) {
+                            renString = "  You are born in the Renaissance.";
+                        }
+                        
+                        let termsString = "";
+                        if(!this.person.termsAccepted) {
+                            termsString = "  Aw man, there goes my retirement.";
+                        }
+
+                        const vcnt = util.countVowels(this.person.name);
+                        const vowelString = ` You have ${vcnt} vowels in your name.`
+
+                        const foodString = " Your favorite foods: "
+                                             + this.person.favFoods.join(", ")
+                                             + ".";
+
+                        // Compile final output
+                        let finalString = birthString + ancientString 
+                                            + termsString + renString
+                                            + vowelString + foodString;
+                        if(this.isShouting) {
+                            finalString = finalString.toUpperCase();
+                        }
+
+                        return finalString;
+                    },
+
+                    render() {
+                        const thoughts = this.buildThoughts();
+                        thoughtElement.textContent = thoughts;
+                    },
+
+                    toggleShouting() {
+                        console.log("this in toggleShouting:", this);
+                        this.isShouting = !this.isShouting;
+                        this.render();
+                    }
+                }
+
+                thoughtsView.render();
+
+                const shoutButton = document.getElementById("toggleShouting");
+                shoutButton.addEventListener(
+                    "click",
+                    thoughtsView.toggleShouting.bind(thoughtsView)
+                );
+
+            </script>
+            <button id="toggleShouting" type="button">Toggle Shouting</button>
+            <p id="thoughts"></p>            
+        </main>
+    </body>
+</html>
