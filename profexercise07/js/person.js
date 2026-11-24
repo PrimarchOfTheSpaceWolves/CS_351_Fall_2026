@@ -1,7 +1,7 @@
 import * as util from "./utils.js"
 
 export class Person {
-    constructor(name, age, termsAccepted) {
+    constructor(name, age, termsAccepted, favFoods) {
         name = name.trim();
         name = name || "Guest";
 
@@ -10,6 +10,8 @@ export class Person {
         this.name = name;
         this.age = age;
         this.termsAccepted = termsAccepted;
+
+        this.favFoods = favFoods;
     }
 
     getFancyName() {
@@ -34,8 +36,8 @@ export class Person {
 }
 
 export class Student extends Person {
-    constructor(name, age, termsAccepted, major) {
-        super(name, age, termsAccepted);
+    constructor(name, age, termsAccepted, favFoods, major) {
+        super(name, age, termsAccepted, favFoods);
         this.major = major;
     }
 

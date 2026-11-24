@@ -40,8 +40,8 @@
                 }
 
                 const person = isStudent ? 
-                    new Student(fullName, age, termsAccepted, major) :
-                    new Person(fullName, age, termsAccepted);
+                    new Student(fullName, age, termsAccepted, cleanFoods, major) :
+                    new Person(fullName, age, termsAccepted, cleanFoods);
               
                 /*
                 // Create person object
@@ -84,10 +84,13 @@
                         const vcnt = util.countVowels(this.person.name);
                         const vowelString = ` You have ${vcnt} vowels in your name.`
 
+                        const foodString = " Your favorite foods: "
+                                             + this.person.favFoods.join(", ");
+
                         // Compile final output
                         let finalString = birthString + ancientString 
                                             + termsString + renString
-                                            + vowelString;
+                                            + vowelString + foodString;
                         if(this.isShouting) {
                             finalString = finalString.toUpperCase();
                         }
